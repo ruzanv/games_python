@@ -28,7 +28,7 @@ class Gallows:
     def player_letter(self):
         while True:
             self.letter = input('Ваша буква? ')
-            if len(self.letter) != 1:
+            if len(self.letter) != 1 or self.letter in [str(i) for i in range(0, 10)]:
                 print('Введите букву корректно!')
                 continue
             else:
