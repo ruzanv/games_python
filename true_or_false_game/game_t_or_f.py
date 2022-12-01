@@ -1,4 +1,4 @@
-from true_or_false_class import TrueOrFalse
+from true_or_false_game.true_or_false_class import TrueOrFalse
 
 
 # a function that calls the game true or false. answer only "yes" or "no"
@@ -21,10 +21,10 @@ def game_true_or_false(file, max_mistake):
                 game.max_mistake -= 1
                 print(f'No, man, you are mistake! {game.value[2]}')
         elif game.value == [''] and game.max_mistake > 0:
-            print(f'Congratulations, my friend, you are win! You scores: {score}')
+            print(f'Congratulations, my friend, you are win! You scores: {score}\n')
             break
         elif game.max_mistake <= 0:
-            print(f'Game is over, you lose!')
+            print(f'Game is over, you lose!\n')
             break
         else:
             print('Game is over!')

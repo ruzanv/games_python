@@ -1,9 +1,8 @@
-import re
+from gallows_game.class_gallows import Gallows
 
-from class_gallows import Gallows
 
-def game_gallows(max_errors):
-    start_game = Gallows(max_errors)
+def game_gallows(file, max_errors):
+    start_game = Gallows(file, max_errors)
     print('''Привет, мой друг, ты попал в игру под названием "Виселица". 
 Игра заключается в том, чтобы ты отгадал побуквенно слово. 
 Если ты называешь букву, которой нет в слове, то ты теряешь жизнь.
@@ -22,7 +21,6 @@ def game_gallows(max_errors):
         elif result_value == [i for i in words]:
             break
         while True:
-            print("\n")
             agile = ['_' * len_letters]
             print(f'Оставшееся количество попыток: {start_game.max_errors}')
             print(f'Отгаданные буквы: {"".join(map(str, result_value + agile))}')
@@ -32,7 +30,7 @@ def game_gallows(max_errors):
             start_game.player_letter()
             # print([i for i in words])
             if start_game.letter.lower() == i:
-                print(f'Да, {name}, ты угадал!')
+                print(f'\n-----\nДа, {name}, ты угадал!')
                 result_value.append(start_game.letter.lower())
                 len_letters -= 1
                 if result_value == [i for i in words]:
@@ -40,17 +38,17 @@ def game_gallows(max_errors):
                     print(f'Конечное слово: {"".join(map(str, result_value))}')
                 break
             elif start_game.letter.lower() in words and start_game.letter.lower() != i:
-                print('Такая буква есть в слове, но она стоит не тут!')
+                print('\n-----\nТакая буква есть в слове, но она стоит не тут!')
                 if start_game.letter.lower() in correct_letters:
                     pass
                 else:
                     correct_letters.append(start_game.letter.lower())
             elif start_game.max_errors < 1:
-                print('Игра окончена, ты проиграл и не смог угадать все буквы!')
+                print('Игра окончена, ты проиграл и не смог угадать все буквы!\n\n')
                 break
             elif result_value == [i for i in words]:
                 break
             else:
-                print(f'Нет, {name}, такой буквы в слове нет!')
+                print(f'\n-----\nНет, {name}, такой буквы в слове нет!')
                 start_game.max_errors -= 1
                 continue

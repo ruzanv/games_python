@@ -11,7 +11,7 @@ class TrueOrFalse:
         self.value = self.fileop.readline().split(';')
 
     def answer_q(self):
-        self.answer = input('Yes or no?')
+        self.answer = input('Yes or no? ')
 
     def in_progress(self):
         if self.value == ['']:

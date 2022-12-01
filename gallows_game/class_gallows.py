@@ -3,14 +3,15 @@ from typing import Optional
 
 
 class Gallows:
-    def __init__(self, max_errors: Optional[int] = 7):
+    def __init__(self, file, max_errors: Optional[int] = 7):
+        self.file = file
         self.word = None
         self.letter = None
         self.max_errors = max_errors
         self.all_letters = set()
 
     def generate(self):
-        afile = open('.\WordsStockRus.txt', encoding='utf-8 ')
+        afile = open(self.file, encoding='utf-8 ')
         try:
             line = next(afile)
             for num, aline in enumerate(afile, 2):
