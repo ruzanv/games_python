@@ -1,0 +1,28 @@
+#!groovy
+// Run docker build for python games
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent {
+        label 'master'
+        }
+    // for auto jenkins, when jenkins looks at commits in git
+    // triggers { pollSCM('* * * * *') }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        timestamps()
+    }
+    stages {
+        stage("create docker image") {
+            steps {
+                echo " ============== start building image =================="
+                dir ('docker') {
+                	sh 'docker build -t python_games . '
+                }
+            }
+        stage("run docker container") {
+            steps {
+                echo " ============== run docker container ================== "
+                sh 'docker run -p 8000 --name PyGames python_games'
+            }
+    }
