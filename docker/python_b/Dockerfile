@@ -7,4 +7,4 @@ WORKDIR /usr/app/src
 
 COPY ../../run_game.py ./
 
-CMD['python3', './run_game.py']
+CMD ['python','./run_game.py']
