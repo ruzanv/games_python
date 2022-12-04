@@ -17,14 +17,13 @@ pipeline {
             steps {
                 echo " ============== START BUILDING IMAGE ================== "
                 sh 'docker build -t python_games . '
-                }
             }
         }
         stage("run docker container") {
             steps {
                 echo " ============== RUN DOCKER CONTAINER ================== "
                 sh 'docker run -p 8000 --name PyGames python_games'
-                }
             }
         }
     }
+}
