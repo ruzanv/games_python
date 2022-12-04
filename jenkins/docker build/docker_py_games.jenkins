@@ -4,7 +4,7 @@ properties([disableConcurrentBuilds()])
 
 pipeline {
     agent {
-        label 'master'
+        label master
         }
     // for auto jenkins, when jenkins looks at commits in git
     // triggers { pollSCM('* * * * *') }
