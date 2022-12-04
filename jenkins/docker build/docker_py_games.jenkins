@@ -15,14 +15,17 @@ pipeline {
     stages {
         stage("create docker image") {
             steps {
-                echo " ============== start building image =================="
-                dir ('docker') {
+                echo " ============== START BUILDING IMAGE =================="
+                dir ('docker/python_b') {
                 	sh 'docker build -t python_games . '
                 }
             }
+        }
         stage("run docker container") {
             steps {
-                echo " ============== run docker container ================== "
+                echo " ============== RUN DOCKER CONTAINER ================== "
                 sh 'docker run -p 8000 --name PyGames python_games'
+                }
             }
+        }
     }
