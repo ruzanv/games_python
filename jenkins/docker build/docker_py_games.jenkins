@@ -16,9 +16,7 @@ pipeline {
         stage("create docker image") {
             steps {
                 echo " ============== START BUILDING IMAGE ================== "
-                dir(games_python){
                 sh 'docker build -t python_games . '
-                }
             }
         }
         stage("run docker container") {
